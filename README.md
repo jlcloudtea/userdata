@@ -14,8 +14,11 @@ A PHP assessment website deployed to an Amazon Linux 2023 EC2 instance using `us
 | Load Test | Task 4 — Auto Scaling |
 | RDS | Task 3 — Database connection |
 | S3 | Tasks 5 & 6 — Online storage; Verify S3 Object Public Access |
+| FAQ & Tips | Lab preparation, EC2/RDS checks and troubleshooting environment reset guidance |
 
 The existing Load Test, RDS and S3 functionality is preserved. The planned Troubleshooting validation tab is **not included in this release**.
+
+The FAQ page includes reminders to complete AWS Academy Labs 1–6 and the additional storage extension and S3 bucket activities in Topic 11 on Learn. Questions expand using native HTML controls and work without JavaScript. Lab-specific service options should be checked against the current assessment instructions.
 
 ## Deploy a new EC2
 

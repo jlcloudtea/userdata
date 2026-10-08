@@ -75,6 +75,7 @@ autocomplete="name" placeholder="e.g. Jane.Smith@student.tafesa.edu.au" value="<
 <li class="list-group-item"><strong>Load Test</strong> — Task 4: Auto Scaling task.</li>
 <li class="list-group-item"><strong>RDS</strong> — Task 3: Database connection.</li>
 <li class="list-group-item"><strong>S3</strong> — Tasks 5 &amp; 6: Online storage.</li>
+<li class="list-group-item"><strong><a href="faq.php">FAQ &amp; Tips</a></strong> — Lab preparation, common questions and troubleshooting guidance.</li>
 </ul></div></div>
 <?php endif; ?>
 </div>
