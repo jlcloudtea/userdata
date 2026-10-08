@@ -2,6 +2,20 @@
 
 A PHP assessment website deployed to an Amazon Linux 2023 EC2 instance using `userdata.sh`. The complete website is packaged in `AWS.zip`; deployment does not require downloading feature-branch overlays.
 
+## Repository files
+
+| File | Purpose |
+| --- | --- |
+| `AWS.zip` | Complete website, including student registration and FAQ & Tips |
+| `userdata.sh` | Amazon Linux 2023 installation and deployment script |
+| `README.md` | Deployment instructions and usage notes |
+
+The old `student-registration/` overlay directory and standalone `faq.php`
+source copy have been removed. Their active website files remain inside
+`AWS.zip`. Previous copies can be recovered from Git history. To edit the
+website, extract the ZIP locally, change the relevant files, and rebuild the
+archive with the website files at its root (not inside an extra folder).
+
 ## Features
 
 - First visit displays **Welcome to CLD401ACF Assessment 2** and asks for **Student Name or Email**.
@@ -51,4 +65,9 @@ Registration is self-declared; it does not authenticate the student against thei
 
 ## Verification
 
-The repackaged ZIP has been checked for archive integrity and preserved entry names. Only the registration homepage, IMDSv2 metadata file and S3 heading were updated; other archive contents were checked byte-for-byte. Shell syntax checks passed. A fresh EC2 deployment of this repackaged release still needs a smoke test covering registration, metadata and all existing tabs.
+The ZIP has been checked for archive integrity and includes registration,
+IMDSv2 metadata, the FAQ page, shared FAQ navigation and the homepage FAQ
+guide entry. The FAQ was tested on an assessment EC2 and reported working.
+This repository cleanup does not change `AWS.zip` or `userdata.sh`.
+A fresh EC2 deployment is recommended to verify installation, registration,
+metadata and all tabs together.
