@@ -8,6 +8,7 @@ dnf install -y mariadb105-server
 cd /var/www/html
 wget https://github.com/jlcloudtea/userdata/raw/refs/heads/main/AWS.zip
 unzip -o AWS.zip -d /var/www/html/
+chmod 644 /var/www/html/*.php
 chown apache:root /var/www/html/rds.conf.php
 
 # Student registration is included in AWS.zip; keep its data outside the webroot.
