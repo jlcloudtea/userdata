@@ -11,7 +11,10 @@ if (is_readable($studentFile)) {
 if (!isset($_SESSION['registration_token'])) {
     $_SESSION['registration_token'] = bin2hex(random_bytes(24));
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $student !== '') {
+    http_response_code(403);
+    $error = 'Student details have already been registered on this instance.';
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $submitted = trim((string)($_POST['student'] ?? ''));
     if (!hash_equals($_SESSION['registration_token'], (string)($_POST['token'] ?? ''))) {
         $error = 'Session expired. Please refresh and try again.';
@@ -28,8 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-$editing = isset($_GET['edit']);
-$showForm = ($student === '') || $editing || ($error !== '');
+$showForm = ($student === '');
 function h($s) { return htmlspecialchars((string)$s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 ?>
 <!DOCTYPE html>
@@ -62,11 +64,18 @@ autocomplete="name" placeholder="e.g. Jane.Smith@student.tafesa.edu.au" value="<
 <?php include 'menu.php'; ?>
 <div class="jumbotron">
 <h2>CLD401ACF Assessment 2</h2>
-<p>Student: <strong><?= h($student) ?></strong> <a href="/?edit=1" class="btn btn-default btn-sm">Edit student details</a></p>
+<p>Student: <strong><?= h($student) ?></strong></p>
 <?php include 'get-index-meta-data.php'; ?>
 <hr>
 <?php include 'get-cpu-load.php'; ?>
 </div>
+<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Assessment 2 — Lab Tabs Guide</h3></div>
+<div class="panel-body"><p>Use the tabs above to complete the corresponding assessment tasks:</p>
+<ul class="list-group">
+<li class="list-group-item"><strong>Load Test</strong> — Task 4: Auto Scaling task.</li>
+<li class="list-group-item"><strong>RDS</strong> — Task 3: Database connection.</li>
+<li class="list-group-item"><strong>S3</strong> — Tasks 5 &amp; 6: Online storage.</li>
+</ul></div></div>
 <?php endif; ?>
 </div>
 <script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/scripts.js"></script>
