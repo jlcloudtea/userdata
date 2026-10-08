@@ -9,3 +9,7 @@ cd /var/www/html
 wget https://github.com/jlcloudtea/userdata/raw/refs/heads/main/AWS.zip
 unzip AWS.zip -d /var/www/html/
 chown apache:root /var/www/html/rds.conf.php
+
+# CLD401ACF registration feature — test branch only.
+dnf install -y curl
+curl -fsSL https://raw.githubusercontent.com/jlcloudtea/userdata/feature/cld401acf-student-registration/student-registration/install.sh | bash
